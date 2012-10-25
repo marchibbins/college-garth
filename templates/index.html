@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Hello world</p>
+    {% for photo in photos %}
+    <div>
+        <img src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}.jpg"/>
+    </div>
+    {% endfor %}
 {% endblock %}
