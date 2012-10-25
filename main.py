@@ -8,9 +8,15 @@ jinja_environment = jinja2.Environment(
     )
 )
 
-class Home(webapp2.RequestHandler):
+class Index(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('index.html')
         self.response.out.write(template.render())
 
-app = webapp2.WSGIApplication([('/', Home)], debug=True)
+def handle_404(request, response, exception):
+    template = jinja_environment.get_template('404.html')
+    response.write(template.render())
+    response.set_status(404)
+
+app = webapp2.WSGIApplication([('/', Index)], debug=True)
+app.error_handlers[404] = handle_404
