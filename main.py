@@ -6,13 +6,15 @@ import webapp2
 
 
 class Index(webapp2.RequestHandler):
-    def get(self):
+    def get(self, page=None):
+        if page == '1':
+            return webapp2.redirect('/')
+
         photoset = flickr_api.Photoset(id=settings.PHOTOSET_ID)
-        data = {
-            'photos': flickr_api.Photoset.getPhotos(photoset)
-        }
+        photos = flickr_api.Photoset.getPhotos(photoset, page=page, per_page=2)
+
         template = jinja_environment.get_template('index.html')
-        self.response.out.write(template.render(data))
+        self.response.out.write(template.render({'photos': photos}))
 
 
 def handle_404(request, response, exception):
@@ -31,5 +33,12 @@ jinja_environment = jinja2.Environment(
     )
 )
 
-app = webapp2.WSGIApplication([('/', Index)], debug=True)
+urls = [
+    ('/', Index),
+    (r'/page/(\d+)', Index),
+]
+
+DEBUG = os.environ['SERVER_SOFTWARE'].startswith('Dev')
+
+app = webapp2.WSGIApplication(urls, debug=DEBUG)
 app.error_handlers[404] = handle_404
