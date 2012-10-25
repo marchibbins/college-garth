@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h2>Dogs</h2>
+
     {% for photo in photos %}
     <div>
-        <img src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}.jpg"/>
+        <h3>{{ photo.title }}</h3>
+        <p>{{ photo.description }}</p>
+        <img src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_m.jpg"/>
     </div>
     {% endfor %}
+
+    {% if photos.info.page > 1 %}
+        <a href="#">Previous</a>
+    {% endif %}
+    {% if photos.info.page < photos.info.pages %}
+        <a href="#">Next</a>
+    {% endif %}
 {% endblock %}
