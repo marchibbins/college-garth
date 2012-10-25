@@ -32,7 +32,7 @@
 
 """
 
-from google.appengine.api import oauth
+import oauth
 import time
 import urlparse
 import urllib2
