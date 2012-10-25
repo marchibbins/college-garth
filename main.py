@@ -27,6 +27,10 @@ flickr_api.set_keys(
     api_secret=settings.API_SECRET
 )
 
+flickr_api.enable_cache(
+    flickr_api.cache.SimpleCache(timeout=300, max_entries=200)
+)
+
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(
         os.path.join(os.path.dirname(__file__), 'templates')
