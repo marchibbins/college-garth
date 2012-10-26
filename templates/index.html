@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Dogs</h2>
 
-    {% for photo in photos %}
+    {% for photo in data.photo %}
     <div>
         <h3>{{ photo.title }}</h3>
         <p>{{ photo.description }}</p>
@@ -11,10 +11,10 @@
     </div>
     {% endfor %}
 
-    {% if photos.info.page > 1 %}
+    {% if data.page > 1 %}
         <a href="#">Previous</a>
     {% endif %}
-    {% if photos.info.page < photos.info.pages %}
+    {% if data.page < data.pages %}
         <a href="#">Next</a>
     {% endif %}
 {% endblock %}
