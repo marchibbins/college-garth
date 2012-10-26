@@ -27,6 +27,7 @@ class Index(webapp2.RequestHandler):
 
         # Render template or JSON
         if json:
+            self.response.headers['Content-Type'] = "application/json; charset=utf-8"
             self.response.out.write(simplejson.dumps(photos))
         else:
             template = jinja_environment.get_template('index.html')
