@@ -18,7 +18,8 @@ class Index(webapp2.RequestHandler):
         if not page:
             page = 1
         elif int(page) < 2:
-            return webapp2.redirect('/')
+            redirect_url = '/json/' if json else '/'
+            return webapp2.redirect(redirect_url, abort=True)
 
         # Grab the data
         photoset = get_photoset(page)
