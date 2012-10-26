@@ -12,7 +12,7 @@ import webapp2
 
 
 class Index(webapp2.RequestHandler):
-    def get(self, page=None):
+    def get(self, page=None, json=False):
         # Redirect for page number
         if not page:
             page = 1
@@ -23,10 +23,17 @@ class Index(webapp2.RequestHandler):
         photoset = get_photoset(page)
         photos = get_photos(photoset)
 
-        # Render template or data for AJAX
-        template = jinja_environment.get_template('index.html')
-        self.response.out.write(template.render({'data': photos}))
-        # self.response.out.write(simplejson.dumps(photos))
+        # Render template or JSON
+        if json:
+            self.response.out.write(simplejson.dumps(photos))
+        else:
+            template = jinja_environment.get_template('index.html')
+            self.response.out.write(template.render({'data': photos}))
+
+
+class JSONIndex(Index):
+    def get(self, page=None):
+        super(JSONIndex, self).get(page, True)
 
 
 def get_photoset(page):
@@ -98,8 +105,13 @@ jinja_environment = jinja2.Environment(
 
 # Routes
 urls = [
-    ('/', Index),
+    # HTML views
+    (r'/', Index),
     (r'/page/(\d+)', Index),
+
+    # JSON views
+    (r'/json/', JSONIndex),
+    (r'/json/page/(\d+)', JSONIndex),
 ]
 
 # Debug based on local or production environment
