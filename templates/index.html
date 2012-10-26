@@ -7,14 +7,14 @@
     <div>
         <h3>{{ photo.title }}</h3>
         <p>{{ photo.description }}</p>
-        <img src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_m.jpg"/>
+        <img src="{{ photo|flickr_src }}"/>
     </div>
     {% endfor %}
 
     {% if data.page|int > 1 %}
-    <a href="/page/{{ data.page|pagination_prev }}">Previous</a>
+    <a href="/page/{{ data.page|int - 1 }}">Previous</a>
     {% endif %}
     {% if data.page|int < data.pages|int %}
-    <a href="/page/{{ data.page|pagination_next }}">Next</a>
+    <a href="/page/{{ data.page|int + 1 }}">Next</a>
     {% endif %}
 {% endblock %}

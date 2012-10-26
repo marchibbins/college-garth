@@ -1,17 +1,11 @@
 # Jinja template filters
 
 
-# Get previous page number
-def pagination_prev(value):
-    return int(value) - 1
-
-
-# Get next page number
-def pagination_next(value):
-    return int(value) + 1
+# Construct image URL from Photo object
+def flickr_src(photo):
+    return 'http://farm%(farm)s.staticflickr.com/%(server)s/%(id)s_%(secret)s_m.jpg' % photo
 
 
 jinja_filters = {
-    'pagination_prev': pagination_prev,
-    'pagination_next': pagination_next,
+    'flickr_src': flickr_src,
 }
