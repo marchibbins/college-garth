@@ -45,11 +45,10 @@ def get_photoset(page):
     else:
         try:
             # Create JSON object from raw data, so we can cache it nicely
-            photoset = simplejson.loads(
+            photoset = get_flickr_json('photoset',
                 flickr.photosets.getPhotos(photoset_id=settings.PHOTOSET_ID,
-                    page=page, per_page=6, format='json', nojsoncallback=1)
-            ).get('photoset')
-            photoset = clean_content(photoset)
+                    page=page, per_page=6, format='json', nojsoncallback=1))
+
             memcache.add('photoset:%s' % page, photoset, 300)
             return photoset
         except:
@@ -69,11 +68,10 @@ def get_photos(photoset):
         else:
             try:
                 # Replace photoset data with info object
-                photo = simplejson.loads(
+                photo = get_flickr_json('photo',
                     flickr.photos.getInfo(photo_id=id, format='json',
-                        nojsoncallback=1)
-                ).get('photo')
-                photo = clean_content(photo)
+                        nojsoncallback=1))
+
                 memcache.add('photo:%s' % id, photo, 300)
                 photos[index] = photo
             except:
@@ -83,6 +81,15 @@ def get_photos(photoset):
     # Remove any empty photo objects
     photoset['photo'] = filter(None, photos)
     return photoset
+
+
+def get_flickr_json(key, data):
+    # API returns raw JSON, including Flickr error codes
+    # Using index directly will throw KeyError (then 404) if API doens't find object
+    json = simplejson.loads(data)[key]
+
+    # Clean object with library
+    return clean_content(json)
 
 
 def handle_404(request, response, exception):
