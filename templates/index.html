@@ -11,10 +11,10 @@
     </div>
     {% endfor %}
 
-    {% if data.page > 1 %}
-        <a href="#">Previous</a>
+    {% if data.page|int > 1 %}
+    <a href="/page/{{ data.page|pagination_prev }}">Previous</a>
     {% endif %}
-    {% if data.page < data.pages %}
-        <a href="#">Next</a>
+    {% if data.page|int < data.pages|int %}
+    <a href="/page/{{ data.page|pagination_next }}">Next</a>
     {% endif %}
 {% endblock %}

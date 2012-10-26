@@ -3,6 +3,7 @@ from google.appengine.api import memcache
 from flickr_api.api import flickr
 from flickr_api.method_call import clean_content
 import flickr_api
+import filters
 import settings
 
 import jinja2
@@ -102,6 +103,8 @@ jinja_environment = jinja2.Environment(
         os.path.join(os.path.dirname(__file__), 'templates')
     )
 )
+
+jinja_environment.filters.update(filters.jinja_filters)
 
 # Routes
 urls = [
