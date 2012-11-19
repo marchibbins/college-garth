@@ -1,0 +1,401 @@
+// College Garth variables
+
+// Grid
+@gridColumns:             16;
+@gridColumnWidth:         40px;
+@gridGutterWidth:         20px;
+
+// 1200px min
+@gridColumnWidth1200:     40px;
+@gridGutterWidth1200:     20px;
+
+// 768px-979px
+@gridColumnWidth768:      32px;
+@gridGutterWidth768:      16px;
+
+// Colours
+@cgBlack:                 #231f20;
+@cgBlue:                  #0960a5;
+@cgBlueLight:             #3a80b4;
+@cgBlueDark:              darken(#0960a5, 15%);
+@cgGray:                  #f2f2f2;
+@cgGrayDark:              #d9d9d9;
+@cgGrayDarker:            #575455;
+
+@bodyBackground:          @white;
+@textColor:               @cgBlack;
+@linkColor:               @cgBlue;
+@linkColorHover:          darken(@cgBlue, 15%);
+
+// Text
+@sansFontFamily:          Arial, sans-serif;
+@customFontFamily:        'Arvo', @sansFontFamily;
+@baseFontSize:            14px;
+@baseLineHeight:          20px;
+@headingsFontFamily:      @customFontFamily;
+@headingsFontWeight:      normal;
+
+// Navbar
+@navbarHeight:                  72px;
+@navbarBackground:              @cgBlue;
+@navbarBackgroundHighlight:     @cgBlue;
+@navbarCollapseWidth:           620px;
+
+@navbarText:                    @white;
+@navbarLinkColor:               @white;
+@navbarLinkColorHover:          @white;
+@navbarLinkColorActive:         @white;
+@navbarLinkBackgroundHover:     @cgBlueDark;
+@navbarLinkBackgroundActive:    @cgBlueDark;
+
+// College Garth styles
+
+p {
+    margin-bottom: 15px;
+}
+
+.container-fluid {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+}
+
+.navbar {
+    margin-bottom: 0;
+    .navbar-inner {
+        border: none;
+        .border-radius(0);
+    }
+    .nav {
+        margin-left: 224px;
+        > li > a {
+            padding: 26px 20px;
+            font-family: @customFontFamily;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.header {
+    padding: 46px 0 24px;
+    background: @cgGray;
+    &:after {
+        content: '';
+        position: relative;
+        bottom: -24px;
+        display: block;
+        width: 100%;
+        height: 30px;
+        background-color: @white;
+        background: -webkit-linear-gradient(-135deg, transparent 75%, @white 75%) 0 50%, -webkit-linear-gradient( 135deg, transparent 75%, @white 75%) 0 50%;
+        background: -moz-linear-gradient(-135deg, transparent 75%, @white 75%) 0 50%, -moz-linear-gradient( 135deg, transparent 75%, @white 75%) 0 50%;
+        background: -o-linear-gradient(-135deg, transparent 75%, @white 75%) 0 50%, -o-linear-gradient( 135deg, transparent 75%, @white 75%) 0 50%;
+        background: linear-gradient(-135deg, transparent 75%, @white 75%) 0 50%, linear-gradient( 135deg, transparent 75%, @white 75%) 0 50%;
+        background-repeat: repeat-x;
+        background-size: 30px 30px, 30px 30px;
+    }
+    .about {
+        position: relative;
+        margin-right: 10px;
+        margin-left: -10px;
+        padding-top: 45px;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 350px;
+            height: 10px;
+            background: @cgBlack;
+        }
+        .bone-icon {
+            position: absolute;
+            top: -14px;
+            right: -10px;
+        }
+    }
+    .find-us {
+        margin-top: 192px;
+        margin-left: -20px;
+        .find-us-title {
+            font-size: 32px;
+        }
+        .find-us-map {
+            margin-bottom: 10px;
+            border: 10px solid @white;
+        }
+        .contact-address {
+            span {
+                display: block;
+            }
+        }
+        .tel-icon {
+            margin-right: 7px;
+        }
+        .hours-icon {
+            margin-right: 5px;
+        }
+    }
+}
+
+.title {
+    height: 0;
+    .logo {
+        position: relative;
+        z-index: 10;
+        a {
+            position: absolute;
+            display: block;
+            top: 10px;
+            left: -28px;
+            width: 260px;
+            height: 260px;
+            .hide-text();
+            background: url('/static/img/logo.png');
+        }
+    }
+}
+
+.subtitle {
+    margin-bottom: 32px;
+    .rehoming {
+        display: block;
+        margin-left: -175px;
+        font-size: 88px;
+        line-height: 100px;
+    }
+    .dawgs {
+        display: block;
+        margin-left: 88px;
+        font-size: 128px;
+        line-height: 80px;
+    }
+    .since {
+        display: block;
+        margin-left: 180px;
+        font-size: 24px;
+        line-height: 70px;
+        color: @cgGrayDarker;
+    }
+    .ages {
+        display: block;
+        margin-left: 60px;
+        font-size: 115px;
+        line-height: 80px;
+    }
+}
+
+.dogs {
+    margin: 42px 0 80px;
+    .dogs-title {
+        margin-bottom: 44px;
+        text-align: center;
+        .the {
+            display: block;
+            margin-left: -152px;
+            font-size: 34px;
+            line-height: 20px;
+            color: @cgGrayDarker;
+        }
+        .dawgs {
+            display: block;
+            margin-left: 20px;
+            font-size: 72px;
+            line-height: 72px;
+            font-weight: bold;
+        }
+    }
+}
+
+.dog {
+    max-width: 350px;
+    margin: 0 auto 45px;
+    background: @grayLighter;
+    .dog-image {
+        width: 100%;
+    }
+    .dog-info {
+        padding: 10px;
+    }
+    .dog-name {
+        margin: 0;
+    }
+}
+
+.pagination {
+    margin: 15px 0;
+    .pagination-previous,
+    .pagination-next {
+        display: block;
+        width: 50%;
+        float: left;
+        a {
+            display: block;
+            margin: 0 10px;
+            padding: 14px;
+            font-family: @customFontFamily;
+            text-transform: uppercase;
+            text-align: center;
+            background: @cgBlue;
+            color: white;
+        }
+    }
+}
+
+.going-on {
+    padding: 50px 0;
+    border-bottom: 3px solid @cgGrayDark;
+    background: @cgGray;
+    .going-on-title {
+        position: relative;
+        margin-bottom: 58px;
+        text-align: center;
+        .what {
+            display: block;
+            margin-left: -110px;
+            font-size: 28px;
+            line-height: 20px;
+            color: @cgGrayDarker;
+        }
+        .going {
+            display: block;
+            margin-left: 40px;
+            font-size: 54px;
+            line-height: 44px;
+            font-weight: bold;
+        }
+        .on {
+            display: block;
+            margin-left: 40px;
+            font-size: 80px;
+            font-weight: bold;
+        }
+        .paw-icon {
+            position: absolute;
+            left: 50%;
+            top: -85px;
+            margin-left: 80px;
+            display: block;
+            width: 84px;
+            height: 104px;
+            background: url('/static/img/paw.png');
+        }
+    }
+    .going-on-social {
+        position: relative;
+        min-height: 76px;
+        margin-bottom: 20px;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            display: block;
+            width: 40px;
+            height: 5px;
+            background: @cgBlack;
+        }
+        p {
+            font-family: @customFontFamily;
+            font-size: 16px;
+            line-height: 22px;
+            color: @cgGrayDarker;
+        }
+    }
+}
+
+.footer {
+    margin: 48px 0 52px;
+    .contact-title,
+    .social-title {
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    .contact-info {
+        span {
+            display: block;
+        }
+        .contact-tel,
+        .contact-hours {
+            position: relative;
+            font-size: 13px;
+            line-height: 17px;
+        }
+        .tel-icon,
+        .hours-icon {
+            position: absolute;
+            top: 5px;
+            left: -35px;
+        }
+    }
+    .social-links {
+        li {
+            float: left;
+            margin-right: 10px;
+            a {
+                .hide-text();
+            }
+        }
+    }
+    .copyright {
+        margin-top: 54px;
+        font-size: 11px;
+        text-align: center;
+    }
+    .top {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        .hide-text();
+        display: block;
+        width: 142px;
+        height: 141px;
+        background: url('/static/img/logo-small.png');
+    }
+}
+
+.bone-icon {
+    .cg-icon(45px, 36px);
+    background: url('/static/img/bone.png');
+}
+
+.tel-icon {
+    .cg-icon(23px, 22px);
+    background: url('/static/img/tel.png');
+}
+
+.hours-icon {
+    .cg-icon(25px, 25px);
+    background: url('/static/img/hours.png');
+}
+
+.twitter-icon {
+    .cg-icon(33px, 33px);
+    background: url('/static/img/twitter.png');
+}
+
+.facebook-icon {
+    .cg-icon(33px, 33px);
+    background: url('/static/img/facebook.png');
+}
+
+.anchor {
+    position: relative;
+    top: -15px;
+    height: 0;
+    .hide-text();
+}
+
+.oops {
+    margin: 50px 0;
+}
+
+.cg-icon(@width, @height) {
+    display: inline-block;
+    .ie7-inline-block();
+    width: @width;
+    height: @height;
+    vertical-align: middle;
+}

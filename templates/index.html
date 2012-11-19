@@ -1,20 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Dogs</h2>
+        <div class="dogs">
+            <a href="#the-dogs" name="the-dogs" class="anchor"></a>
+            <div class="container-fluid">
+                <h2 class="dogs-title"><span class="the">The</span> <span class="dawgs">Dogs</span></h2>
 
-    {% for photo in data.photo %}
-    <div>
-        <h3>{{ photo.title }}</h3>
-        <p>{{ photo.description }}</p>
-        <img src="{{ photo|flickr_src }}"/>
-    </div>
-    {% endfor %}
+                <div class="row-fluid">
+                    {% for photo in data.photo %}
+                    <div class="span5">
+                        <div class="dog">
+                            <img src="{{ photo|flickr_src }}" class="dog-image"/>
+                            <div class="dog-info">
+                                <h3 class="dog-name">{{ photo.title }}</h3>
+                                {# <p class="dog-description">{{ photo.description }}</p> #}
+                            </div>
+                        </div>
+                    </div>
+                    {% if not loop.last and loop.index is divisibleby 3 %}
+                </div>
+                <div class="row-fluid">
+                    {% endif %}
+                    {% endfor %}
+                </div>
 
-    {% if data.page|int > 1 %}
-    <a href="/page/{{ data.page|int - 1 }}">Previous</a>
-    {% endif %}
-    {% if data.page|int < data.pages|int %}
-    <a href="/page/{{ data.page|int + 1 }}">Next</a>
-    {% endif %}
+                <div class="pagination">
+                    {% if data.page|int > 1 %}
+                    <div class="pagination-previous">
+                        <a href="/page/{{ data.page|int - 1 }}">Previous</a>
+                    </div>
+                    {% endif %}
+                    {% if data.page|int < data.pages|int %}
+                    <div class="pagination-next">
+                        <a href="/page/{{ data.page|int + 1 }}">Next</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 {% endblock %}
