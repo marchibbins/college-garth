@@ -218,10 +218,11 @@ p {
         width: 100%;
     }
     .dog-info {
-        padding: 10px;
+        padding: 6px 10px;
     }
     .dog-name {
         margin: 0;
+        font-size: 20px;
     }
 }
 
@@ -382,6 +383,15 @@ p {
     background: url('/static/img/facebook.png');
 }
 
+.progress {
+    width: 350px;
+    margin: 0 auto;
+    .bar {
+        width: 100%;
+        #gradient > .striped(@cgBlue);
+    }
+}
+
 .anchor {
     position: relative;
     top: -15px;
@@ -391,6 +401,11 @@ p {
 
 .oops {
     margin: 50px 0;
+}
+
+.hidden {
+    .invisible();
+    height: 0;
 }
 
 .cg-icon(@width, @height) {
