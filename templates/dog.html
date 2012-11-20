@@ -5,7 +5,7 @@
                 <img src="{% if photo %}{{ photo|flickr_src }}{% endif %}" class="dog-image"/>
                 <div class="dog-info">
                     <h3 class="dog-name">{% if photo %}{{ photo.title|title }}{% endif %}</h3>
-                    {# <p class="dog-description">{% if photo %}{{ photo.description }}{% endif %}</p> #}
+                    <p class="dog-description">{% if photo %}{{ photo.description|truncate(75)|line_breaks }}{% endif %}</p>
                 </div>
             </div>
         </div>

@@ -52,8 +52,24 @@
                     'background-size': imageWidth + 'px ' + imageHeight + 'px'
                 });
 
+                // Truncate description
+                var description = $('.dog-description', this);
+                var lines = description.html().split('<br>');
+                if (lines.length > 2) {
+                    var truncated = lines.slice(0, 2).join('<br>') + '...';
+                    description.html(truncated);
+                }
+
                 // Show new dawg
                 dog.addClass('js-dog').parent().removeClass('hidden');
+            });
+
+            // Square up sizes
+            $('.dogs .row-fluid').each(function() {
+                var height = 0;
+                $('.dog-info', this).each(function() {
+                    height = Math.max(height, $(this).height())
+                }).css('minHeight', height);
             });
         };
 
@@ -100,12 +116,25 @@
                         count = 0;
 
                     $.each(data.photo, function(i, obj) {
+                        // Basic info
                         var template = $(templateHTML),
                             name = obj.title.charAt(0).toUpperCase() + obj.title.slice(1),
+                            description = obj.description,
+
+                            // Make Flickr url
                             image = 'http://farm' + obj.farm + '.staticflickr.com/' + obj.server + '/' + obj.id + '_' + obj.secret + '.jpg';
 
+                        // Truncate and clean description
+                        if (description.length > 75) {
+                            description = description.substring(0, 75).replace(/\n/g, '<br/>') + '...';
+                        } else {
+                            description = description.replace(/\n/g, '<br/>');
+                        }
+
                         $('.dog-name', template).text(name);
+                        $('.dog-description', template).html(description);
                         $('.dog-image', template).attr('src', image);
+
                         template.addClass('hidden');
                         count++;
 

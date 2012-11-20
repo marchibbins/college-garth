@@ -35,6 +35,7 @@ class Index(webapp2.RequestHandler):
 
 
 class JSONIndex(Index):
+    # Raw JSON for page
     def get(self, page=None):
         super(JSONIndex, self).get(page, True)
 
@@ -87,7 +88,7 @@ def get_photos(photoset):
 
 def get_flickr_json(key, data):
     # API returns raw JSON, including Flickr error codes
-    # Using index directly will throw KeyError (then 404) if API doens't find object
+    # Using index directly will throw KeyError (then 404) if API doesn't find object
     json = simplejson.loads(data)[key]
 
     # Clean object with library
