@@ -12,7 +12,7 @@
                         <div class="dog">
                             <img src="{{ photo|flickr_src }}" class="dog-image"/>
                             <div class="dog-info">
-                                <h3 class="dog-name">{{ photo.title }}</h3>
+                                <h3 class="dog-name">{{ photo.title|title }}</h3>
                                 {# <p class="dog-description">{{ photo.description }}</p> #}
                             </div>
                         </div>
