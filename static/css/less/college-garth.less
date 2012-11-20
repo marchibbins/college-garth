@@ -208,6 +208,9 @@ p {
             font-weight: bold;
         }
     }
+    .row-fluid [class*="span"] {
+        min-height: 0;
+    }
 }
 
 .dog {
@@ -228,6 +231,7 @@ p {
 
 .pagination {
     margin: 15px 0;
+    .pagination-more,
     .pagination-previous,
     .pagination-next {
         display: block;
@@ -242,6 +246,19 @@ p {
             text-align: center;
             background: @cgBlue;
             color: white;
+        }
+    }
+    .pagination-more {
+        width: 100%;
+        .disabled {
+            background: @cgGrayDarker;
+            cursor: default;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        a {
+            margin: 0;
         }
     }
 }

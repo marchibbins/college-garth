@@ -1,0 +1,11 @@
+{# Template for each dog, also rendered empty #}
+
+        <div class="span5">
+            <div class="dog">
+                <img src="{% if photo %}{{ photo|flickr_src }}{% endif %}" class="dog-image"/>
+                <div class="dog-info">
+                    <h3 class="dog-name">{% if photo %}{{ photo.title|title }}{% endif %}</h3>
+                    {# <p class="dog-description">{% if photo %}{{ photo.description }}{% endif %}</p> #}
+                </div>
+            </div>
+        </div>

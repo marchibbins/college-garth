@@ -2864,6 +2864,9 @@ p {
   line-height: 72px;
   font-weight: bold;
 }
+.dogs .row-fluid [class*="span"] {
+  min-height: 0;
+}
 .dog {
   max-width: 350px;
   margin: 0 auto 45px;
@@ -2882,12 +2885,14 @@ p {
 .pagination {
   margin: 15px 0;
 }
+.pagination .pagination-more,
 .pagination .pagination-previous,
 .pagination .pagination-next {
   display: block;
   width: 50%;
   float: left;
 }
+.pagination .pagination-more a,
 .pagination .pagination-previous a,
 .pagination .pagination-next a {
   display: block;
@@ -2898,6 +2903,19 @@ p {
   text-align: center;
   background: #0960a5;
   color: white;
+}
+.pagination .pagination-more {
+  width: 100%;
+}
+.pagination .pagination-more .disabled {
+  background: #575455;
+  cursor: default;
+}
+.pagination .pagination-more .disabled:hover {
+  text-decoration: none;
+}
+.pagination .pagination-more a {
+  margin: 0;
 }
 .going-on {
   padding: 50px 0;
