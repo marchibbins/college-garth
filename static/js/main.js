@@ -56,7 +56,7 @@
                 var description = $('.dog-description', this);
                 var lines = description.html().split('<br>');
                 if (lines.length > 2) {
-                    var truncated = lines.slice(0, 2).join('<br>') + '...';
+                    var truncated = lines.slice(0, 2).join('<br>') + ' ...';
                     description.html(truncated);
                 }
 
@@ -119,16 +119,16 @@
                         // Basic info
                         var template = $(templateHTML),
                             name = obj.title.charAt(0).toUpperCase() + obj.title.slice(1),
-                            description = obj.description,
+                            description = obj.description || '',
 
                             // Make Flickr url
                             image = 'http://farm' + obj.farm + '.staticflickr.com/' + obj.server + '/' + obj.id + '_' + obj.secret + '.jpg';
 
                         // Truncate and clean description
                         if (description.length > 75) {
-                            description = description.substring(0, 75).replace(/\n/g, '<br/>') + '...';
+                            description = description.substring(0, 75).replace(/\n/g, '<br>') + ' ...';
                         } else {
-                            description = description.replace(/\n/g, '<br/>');
+                            description = description.replace(/\n/g, '<br>');
                         }
 
                         $('.dog-name', template).text(name);
