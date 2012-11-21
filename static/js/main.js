@@ -181,9 +181,15 @@
         CGRK.dogs.init();
 
         // Open external link in new window
-        $('[rel="external"]').click(function(event) {
+        $('a[rel="external"]').click(function(event) {
             event.preventDefault();
             window.open(this.href);
+        });
+
+        // Smooth scrolling
+        $('a.scrollTo').click(function(event) {
+            var name = $(this).attr('href').split('#')[1];
+            if (name) $(window).scrollTo($('.anchor[name="' + name + '"]'), 500);
         });
 
     });
