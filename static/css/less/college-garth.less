@@ -17,7 +17,7 @@
 @cgBlack:                 #231f20;
 @cgBlue:                  #0960a5;
 @cgBlueLight:             #3a80b4;
-@cgBlueDark:              darken(#0960a5, 15%);
+@cgBlueDark:              darken(@cgBlue, 15%);
 @cgGray:                  #f2f2f2;
 @cgGrayDark:              #d9d9d9;
 @cgGrayDarker:            #575455;
@@ -25,7 +25,7 @@
 @bodyBackground:          @white;
 @textColor:               @cgBlack;
 @linkColor:               @cgBlue;
-@linkColorHover:          darken(@cgBlue, 15%);
+@linkColorHover:          @cgBlueDark;
 
 // Text
 @sansFontFamily:          Arial, sans-serif;
@@ -310,7 +310,7 @@ p {
     .going-on-social {
         position: relative;
         min-height: 76px;
-        margin-bottom: 20px;
+        margin-bottom: 46px;
         &:after {
             content: '';
             position: absolute;
@@ -327,6 +327,9 @@ p {
             line-height: 22px;
             color: @cgGrayDarker;
         }
+    }
+    .fb-like-box > span {
+        background: @white;
     }
 }
 

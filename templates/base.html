@@ -83,14 +83,28 @@
             <div class="container-fluid">
                 <h2 class="going-on-title"><i class="paw-icon"></i><span class="what">What's</span> <span class="going">going</span> <span class="on">on</span></h2>
                 <div class="row-fluid">
-                    <div class="span5 going-on-social">
-                        <p><strong><a href="http://www.facebook.com/CollegeGarthRescueKennels" rel="external">Share</a></strong> your rescue stories and meet other dog lovers on our Facebook page</p>
+                    <div class="span5">
+                        <div class="going-on-social">
+                            <p><strong><a href="http://www.facebook.com/CollegeGarthRescueKennels" rel="external">Share</a></strong> your rescue stories and meet other dog lovers on our Facebook page</p>
+                        </div>
+                        <div class="going-on-plugin">
+                            <div class="fb-like-box" data-href="http://www.facebook.com/CollegeGarthRescueKennels" data-width="270" data-height="400" data-show-faces="false" data-border-color="#e8e8e8" data-stream="true" data-header="false"></div>
+                        </div>
                     </div>
-                    <div class="span5 going-on-social">
-                        <p><strong><a href="http://twitter.com/CollegeGarth" rel="external">Follow us</a></strong> on Twitter for the latest dog news and College Garth updates</p>
+                    <div class="span5">
+                        <div class="going-on-social">
+                            <p><strong><a href="http://twitter.com/CollegeGarth" rel="external">Follow us</a></strong> on Twitter for the latest dog news and College Garth updates</p>
+                        </div>
+                        <div class="going-on-plugin">
+                            <a class="twitter-timeline" data-dnt=true href="https://twitter.com/CollegeGarth" data-widget-id="271206358790062082"></a>
+                        </div>
                     </div>
-                    <div class="span5 going-on-social">
-                        <p><strong>Stray in touch</strong> and sign up for our email newsletter!</p>
+                    <div class="span5">
+                        <div class="going-on-social">
+                            <p><strong>Stray in touch</strong> and sign up for our email newsletter!</p>
+                        </div>
+                        <div class="going-on-plugin">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,6 +146,14 @@
                 <a href="#top" class="top">Go to top</a>
             </div>
         </div>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        </script>
 
         <script src="/static/js/jquery.min.js"></script>
         <script src="/static/js/jquery.imagesloaded.min.js"></script>

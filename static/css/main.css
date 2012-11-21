@@ -2965,7 +2965,7 @@ p {
 .going-on .going-on-social {
   position: relative;
   min-height: 76px;
-  margin-bottom: 20px;
+  margin-bottom: 46px;
 }
 .going-on .going-on-social:after {
   content: '';
@@ -2982,6 +2982,9 @@ p {
   font-size: 16px;
   line-height: 22px;
   color: #575455;
+}
+.going-on .fb-like-box > span {
+  background: #ffffff;
 }
 .footer {
   margin: 48px 0 52px;
