@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                     </a> -->
                     <!-- <div class="nav-collapse collapse"> -->
-                        <ul class="nav">
+                        <ul class="nav" role="navigation">
                             <li><a href="#the-dogs" class="scrollTo">See the dogs</a>
                             <li><a href="http://www.facebook.com/CollegeGarthRescueKennels" rel="external">Our Facebook page</a>
                             <li><a href="#whats-going-on" class="scrollTo">What's going on</a>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="header">
+        <div class="header" role="banner">
             <div class="container-fluid">
                 <div class="row-fluid">
                     <div class="span7 offset3 pull-right">
@@ -78,7 +78,7 @@
 
         {% block content %}{% endblock %}
 
-        <div class="going-on">
+        <div class="going-on" role="complementary">
             <a href="#whats-going-on" name="whats-going-on" class="anchor"></a>
             <div class="container-fluid">
                 <h2 class="going-on-title"><i class="paw-icon"></i><span class="what">What's</span> <span class="going">going</span> <span class="on">on</span></h2>
@@ -88,7 +88,7 @@
                             <p><strong><a href="http://www.facebook.com/CollegeGarthRescueKennels" rel="external">Share</a></strong> your rescue stories and meet other dog lovers on our Facebook page</p>
                         </div>
                         <div class="going-on-plugin">
-                            <div class="fb-like-box" data-href="http://www.facebook.com/CollegeGarthRescueKennels" data-width="270" data-height="400" data-show-faces="false" data-border-color="#e8e8e8" data-stream="true" data-header="false"></div>
+                            <div class="fb-like-box" data-href="http://www.facebook.com/CollegeGarthRescueKennels" data-width="270" data-height="430" data-show-faces="false" data-border-color="#e8e8e8" data-stream="true" data-header="false"></div>
                         </div>
                     </div>
                     <div class="span5">
@@ -104,12 +104,12 @@
                             <p><strong>Stray in touch</strong> and sign up for our email newsletter!</p>
                         </div>
                         <div class="going-on-plugin">
-                            <form class="going-on-form" action="/" method="post">
+                            <form class="going-on-form" role="form" action="/" method="post">
                                 <fieldset>
                                     <legend>Newsletter subscription</legend>
                                     <label>Email address</label>
                                     <input type="text" placeholder="Enter your email address">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" role="button" class="btn btn-primary">Submit</button>
                                 </fieldset>
                             </form>
                         </div>
@@ -157,7 +157,7 @@
 
         <div id="volunteer" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" role="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="modal-title" class="modal-title">Interested in volunteering at the kennels?</h3>
             </div>
             <div class="modal-body">
