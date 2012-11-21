@@ -1578,6 +1578,30 @@ legend + .control-group {
 .collapse.in {
   height: auto;
 }
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
 .btn {
   display: inline-block;
   *display: inline;
@@ -3206,13 +3230,13 @@ p {
 }
 .subtitle .rehoming {
   display: block;
-  margin-left: -175px;
+  margin-left: -174px;
   font-size: 88px;
   line-height: 100px;
 }
 .subtitle .dawgs {
   display: block;
-  margin-left: 88px;
+  margin-left: 84px;
   font-size: 128px;
   line-height: 80px;
 }
@@ -3448,6 +3472,74 @@ p {
   height: 141px;
   background: url('/static/img/logo-small.png');
 }
+.modal {
+  width: 620px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.modal.fade {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.modal .modal-header {
+  border: none;
+  padding: 54px 108px 16px 54px;
+}
+.modal .modal-body {
+  padding: 10px 160px 60px 54px;
+}
+.modal .modal-title {
+  font-size: 34px;
+  line-height: 38px;
+}
+.modal .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin: 0;
+  text-shadow: none;
+  background: #0960a5;
+  color: #ffffff;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.progress {
+  width: 350px;
+  margin: 0 auto;
+}
+.progress .bar {
+  width: 100%;
+  background-color: #0960a5;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.anchor {
+  position: relative;
+  top: -85px;
+  height: 0;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.oops {
+  margin: 50px 0;
+}
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
 .bone-icon {
   display: inline-block;
   *display: inline;
@@ -3502,34 +3594,4 @@ p {
   height: 33px;
   vertical-align: middle;
   background: url('/static/img/facebook.png');
-}
-.progress {
-  width: 350px;
-  margin: 0 auto;
-}
-.progress .bar {
-  width: 100%;
-  background-color: #0960a5;
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-}
-.anchor {
-  position: relative;
-  top: -85px;
-  height: 0;
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.oops {
-  margin: 50px 0;
-}
-.hidden {
-  visibility: hidden;
-  height: 0;
 }

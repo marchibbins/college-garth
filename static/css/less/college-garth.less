@@ -163,13 +163,13 @@ p {
     margin-bottom: 32px;
     .rehoming {
         display: block;
-        margin-left: -175px;
+        margin-left: -174px;
         font-size: 88px;
         line-height: 100px;
     }
     .dawgs {
         display: block;
-        margin-left: 88px;
+        margin-left: 84px;
         font-size: 128px;
         line-height: 80px;
     }
@@ -403,29 +403,37 @@ p {
     }
 }
 
-.bone-icon {
-    .cg-icon(45px, 36px);
-    background: url('/static/img/bone.png');
-}
-
-.tel-icon {
-    .cg-icon(23px, 22px);
-    background: url('/static/img/tel.png');
-}
-
-.hours-icon {
-    .cg-icon(25px, 25px);
-    background: url('/static/img/hours.png');
-}
-
-.twitter-icon {
-    .cg-icon(33px, 33px);
-    background: url('/static/img/twitter.png');
-}
-
-.facebook-icon {
-    .cg-icon(33px, 33px);
-    background: url('/static/img/facebook.png');
+.modal {
+    width: 620px;
+    .border-radius(0);
+    &.fade {
+        .transition(none);
+    }
+    .modal-header {
+        border: none;
+        padding: 54px 108px 16px 54px;
+    }
+    .modal-body {
+        padding: 10px 160px 60px 54px;
+    }
+    .modal-title {
+        font-size: 34px;
+        line-height: 38px;
+    }
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 30px;
+        height: 30px;
+        float: left;
+        margin: 0;
+        text-shadow: none;
+        background: @cgBlue;
+        color: @white;
+        .opacity(100);
+    }
 }
 
 .progress {
@@ -451,6 +459,31 @@ p {
 .hidden {
     .invisible();
     height: 0;
+}
+
+.bone-icon {
+    .cg-icon(45px, 36px);
+    background: url('/static/img/bone.png');
+}
+
+.tel-icon {
+    .cg-icon(23px, 22px);
+    background: url('/static/img/tel.png');
+}
+
+.hours-icon {
+    .cg-icon(25px, 25px);
+    background: url('/static/img/hours.png');
+}
+
+.twitter-icon {
+    .cg-icon(33px, 33px);
+    background: url('/static/img/twitter.png');
+}
+
+.facebook-icon {
+    .cg-icon(33px, 33px);
+    background: url('/static/img/facebook.png');
 }
 
 .cg-icon(@width, @height) {
