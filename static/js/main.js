@@ -142,7 +142,7 @@
                         if (count === 1) append += '<div class="row-fluid">';
                         append += $('<div>').append(template.clone()).html();
 
-                        if (count === 3) {
+                        if (count === 3 || i === data.photo.length - 1) {
                             append += '</div>';
                             count = 0;
                         }
