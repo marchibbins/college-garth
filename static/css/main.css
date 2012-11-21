@@ -3132,9 +3132,9 @@ p {
   width: 100%;
   height: 30px;
   background-color: #ffffff;
-  background: -webkit-linear-gradient(-135deg, transparent 75%, #ffffff 75%) 0 50%, -webkit-linear-gradient(135deg, transparent 75%, #ffffff 75%) 0 50%;
-  background: -moz-linear-gradient(-135deg, transparent 75%, #ffffff 75%) 0 50%, -moz-linear-gradient(135deg, transparent 75%, #ffffff 75%) 0 50%;
-  background: -o-linear-gradient(-135deg, transparent 75%, #ffffff 75%) 0 50%, -o-linear-gradient(135deg, transparent 75%, #ffffff 75%) 0 50%;
+  background: -webkit-linear-gradient(-45deg, transparent 75%, #ffffff 75%) 0 50%, -webkit-linear-gradient(225deg, transparent 75%, #ffffff 75%) 0 50%;
+  background: -moz-linear-gradient(-45deg, transparent 75%, #ffffff 75%) 0 50%, -moz-linear-gradient(225deg, transparent 75%, #ffffff 75%) 0 50%;
+  background: -o-linear-gradient(-45deg, transparent 75%, #ffffff 75%) 0 50%, -o-linear-gradient(225deg, transparent 75%, #ffffff 75%) 0 50%;
   background: linear-gradient(-135deg, transparent 75%, #ffffff 75%) 0 50%, linear-gradient(135deg, transparent 75%, #ffffff 75%) 0 50%;
   background-repeat: repeat-x;
   background-size: 30px 30px, 30px 30px;
