@@ -1,11 +1,14 @@
 from google.appengine.api import memcache
 
+from pychimp import PyChimp
+
 from flickr_api.api import flickr
 from flickr_api.method_call import clean_content
 import flickr_api
 import filters
 import settings
 
+import cgi
 import jinja2
 import json
 import os
@@ -38,6 +41,17 @@ class JSONIndex(Index):
     # Raw JSON for page
     def get(self, page=None):
         super(JSONIndex, self).get(page, True)
+
+
+class Signup(webapp2.RequestHandler):
+    def post(self):
+        email = cgi.escape(self.request.get('email'))
+        pm = PyChimp(settings.MAILCHIMP_KEY)
+        try:
+            pm.listSubscribe(settings.MAILCHIMP_LIST, email, {'FIRST': '', 'LAST': ''})
+            self.redirect('/?subscribe=success')
+        except:
+            self.redirect('/?subscribe=failed')
 
 
 def get_photoset(page):
@@ -125,6 +139,9 @@ urls = [
     # JSON views
     (r'/json/', JSONIndex),
     (r'/json/page/(\d+)', JSONIndex),
+
+    # Newsletter signup
+    (r'/signup', Signup),
 ]
 
 # Debug based on local or production environment
