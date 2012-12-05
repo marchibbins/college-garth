@@ -7,18 +7,18 @@ import filters
 import settings
 
 import jinja2
+import json
 import os
-import simplejson
 import webapp2
 
 
 class Index(webapp2.RequestHandler):
-    def get(self, page=None, json=False):
+    def get(self, page=None, api=False):
         # Redirect for page number
         if not page:
             page = 1
         elif int(page) < 2:
-            redirect_url = '/json/' if json else '/'
+            redirect_url = '/json/' if api else '/'
             return webapp2.redirect(redirect_url, abort=True)
 
         # Grab the data
@@ -26,9 +26,9 @@ class Index(webapp2.RequestHandler):
         photos = get_photos(photoset)
 
         # Render template or JSON
-        if json:
+        if api:
             self.response.headers['Content-Type'] = "application/json; charset=utf-8"
-            self.response.out.write(simplejson.dumps(photos))
+            self.response.out.write(json.dumps(photos))
         else:
             template = jinja_environment.get_template('index.html')
             self.response.out.write(template.render({'data': photos}))
@@ -89,10 +89,10 @@ def get_photos(photoset):
 def get_flickr_json(key, data):
     # API returns raw JSON, including Flickr error codes
     # Using index directly will throw KeyError (then 404) if API doesn't find object
-    json = simplejson.loads(data)[key]
+    json_data = json.loads(data)[key]
 
     # Clean object with library
-    return clean_content(json)
+    return clean_content(json_data)
 
 
 def handle_404(request, response, exception):
