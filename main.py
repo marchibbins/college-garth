@@ -17,6 +17,10 @@ import webapp2
 
 class Index(webapp2.RequestHandler):
     def get(self, page=None, api=False):
+        # Check we're on our custom domain
+        if os.environ['HTTP_HOST'].endswith('.appspot.com'):
+            self.redirect(settings.DOMAIN)
+
         # Redirect for page number
         if not page:
             page = 1
