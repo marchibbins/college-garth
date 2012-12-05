@@ -58,7 +58,7 @@
                 if (lines.length > 2) {
                     var truncated = lines.slice(0, 2).join('<br>') + ' ...';
                     description.html(truncated);
-                }
+                };
 
                 // Show new dawg
                 dog.addClass('js-dog').parent().removeClass('hidden');
