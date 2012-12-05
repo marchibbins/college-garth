@@ -3606,6 +3606,17 @@ p {
   vertical-align: middle;
   background: url('/static/img/facebook.png');
 }
+.flickr-icon {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  width: 33px;
+  height: 33px;
+  vertical-align: middle;
+  background: url('/static/img/flickr.png');
+}
 .dogs .dog-container {
   width: 30.851063829787233%;
   margin-left: 3.723404255319149%;
