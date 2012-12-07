@@ -50,9 +50,9 @@ class JSONIndex(Index):
 class Signup(webapp2.RequestHandler):
     def post(self):
         email = cgi.escape(self.request.get('email'))
-        pm = PyChimp(settings.MAILCHIMP_KEY)
+        mailchimp = PyChimp(settings.MAILCHIMP_KEY)
         try:
-            pm.listSubscribe(settings.MAILCHIMP_LIST, email, {'FIRST': '', 'LAST': ''})
+            mailchimp.listSubscribe(settings.MAILCHIMP_LIST, email, {'FIRST': '', 'LAST': ''})
             self.redirect('/?subscribe=success')
         except:
             self.redirect('/?subscribe=failed')
