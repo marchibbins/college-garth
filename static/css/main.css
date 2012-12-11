@@ -3230,6 +3230,9 @@ p {
 .header .find-us .hours-icon {
   margin-right: 5px;
 }
+.header .fb-like {
+  margin: 10px 0;
+}
 .title {
   height: 0;
 }
@@ -3514,7 +3517,7 @@ p {
 }
 .footer .top {
   position: absolute;
-  top: -26px;
+  top: -20px;
   left: 12px;
   font: 0/0 a;
   color: transparent;
