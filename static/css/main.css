@@ -3292,7 +3292,7 @@ p {
   line-height: 60px;
 }
 .dogs {
-  margin: 42px 0 80px;
+  margin: 42px 0 66px;
 }
 .dogs .dogs-title {
   margin-bottom: 34px;
@@ -3360,7 +3360,9 @@ p {
   color: white;
 }
 .pagination .pagination-more {
-  width: 100%;
+  width: 740px;
+  margin: 0 auto;
+  float: none;
 }
 .pagination .pagination-more .disabled {
   background: #575455;
