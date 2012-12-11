@@ -21,6 +21,7 @@
                 $('.dogs .progress').remove();
                 CGRK.dogs.update();
 
+                // Show pagiantion
                 $('.dogs .pagination').show();
             });
 
@@ -59,6 +60,29 @@
                     var truncated = lines.slice(0, 2).join('<br>') + ' ...';
                     description.html(truncated);
                 };
+
+                // Permalink
+                var id = dog.data().id,
+                    detail = $('#detail');
+
+                detail.on('show', function() {
+                    detail.css('margin-top', (detail.outerHeight() / 2) * -1)
+                          .css('margin-left', (detail.outerWidth() / 2) * -1);
+                })
+                .on('hide', function() {
+                    window.location.hash = '#home';
+                });
+
+                dog.click(function() {
+                    var image = dog.find('.dog-image'),
+                        info = dog.find('.dog-info').html();
+
+                    detail.find('.detail-image').attr('src', image.attr('src'));
+                    detail.find('.detail-info').html(info);
+
+                    detail.modal();
+                    window.location.hash = '#' + id;
+                }).css('cursor', 'pointer');
 
                 // Show new dawg
                 dog.addClass('js-dog').parent().removeClass('hidden');
@@ -118,21 +142,25 @@
                     $.each(data.photo, function(i, obj) {
                         // Basic info
                         var template = $(templateHTML),
+                            id = obj.id,
                             name = obj.title.charAt(0).toUpperCase() + obj.title.slice(1),
-                            description = obj.description || '',
+                            description = description_full = obj.description || '',
 
                             // Make Flickr url
                             image = 'http://farm' + obj.farm + '.staticflickr.com/' + obj.server + '/' + obj.id + '_' + obj.secret + '.jpg';
 
                         // Truncate and clean description
+                        // description_full = description_full.replace(/\n/g, '<br>');
                         if (description.length > 75) {
                             description = description.substring(0, 75).replace(/\n/g, '<br>') + ' ...';
                         } else {
                             description = description.replace(/\n/g, '<br>');
                         }
 
+                        $('.dog', template).attr('data-id', id);
                         $('.dog-name', template).text(name);
                         $('.dog-description', template).html(description);
+                        $('.dog-description-full', template).html(description_full);
                         $('.dog-image', template).attr('src', image);
 
                         template.addClass('hidden');

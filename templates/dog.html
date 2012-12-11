@@ -1,11 +1,12 @@
 {# Template for each dog, also rendered empty #}
 
         <div class="span5 dog-container">
-            <div class="dog">
+            <div class="dog" {% if photo %}data-id="{{ photo.id }}"{% endif %}>
                 <img src="{% if photo %}{{ photo|flickr_src }}{% endif %}" class="dog-image"/>
                 <div class="dog-info">
                     <h3 class="dog-name">{% if photo %}{{ photo.title|title }}{% endif %}</h3>
                     <p class="dog-description">{% if photo %}{{ photo.description|truncate(75)|line_breaks }}{% endif %}</p>
+                    <p class="dog-description-full hide">{% if photo %}{{ photo.description|line_breaks }}{% endif %}</p>
                 </div>
             </div>
         </div>

@@ -475,17 +475,15 @@ p {
 }
 
 .modal {
-    width: 620px;
     .border-radius(0);
     &.fade {
         .transition(none);
     }
     .modal-header {
         border: none;
-        padding: 54px 108px 16px 54px;
     }
     .modal-body {
-        padding: 10px 160px 60px 54px;
+        max-height: none;
     }
     .modal-title {
         font-size: 36px;
@@ -505,6 +503,41 @@ p {
         background: @cgBlue;
         color: @white;
         .opacity(100);
+    }
+}
+
+#detail {
+    width: auto;
+    .modal-body {
+        padding: 0;
+    }
+    .detail-image {
+        max-height: 420px;
+    }
+    .detail-info {
+        padding: 6px 10px;
+        background: @grayLighter;
+        .dog-name {
+            margin: 0;
+        }
+        .dog-description {
+            display: none;
+        }
+        .dog-description-full {
+            display: block;
+            max-width: 320px;
+        }
+    }
+}
+
+#volunteer {
+    width: 620px;
+    .modal-header {
+        border: none;
+        padding: 54px 108px 16px 54px;
+    }
+    .modal-body {
+        padding: 10px 160px 60px 54px;
     }
 }
 

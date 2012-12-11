@@ -3536,7 +3536,6 @@ p {
   background: url('/static/img/logo-small.png');
 }
 .modal {
-  width: 620px;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -3549,10 +3548,9 @@ p {
 }
 .modal .modal-header {
   border: none;
-  padding: 54px 108px 16px 54px;
 }
 .modal .modal-body {
-  padding: 10px 160px 60px 54px;
+  max-height: none;
 }
 .modal .modal-title {
   font-size: 36px;
@@ -3573,6 +3571,39 @@ p {
   color: #ffffff;
   opacity: 1;
   filter: alpha(opacity=100);
+}
+#detail {
+  width: auto;
+}
+#detail .modal-body {
+  padding: 0;
+}
+#detail .detail-image {
+  max-height: 420px;
+}
+#detail .detail-info {
+  padding: 6px 10px;
+  background: #eeeeee;
+}
+#detail .detail-info .dog-name {
+  margin: 0;
+}
+#detail .detail-info .dog-description {
+  display: none;
+}
+#detail .detail-info .dog-description-full {
+  display: block;
+  max-width: 320px;
+}
+#volunteer {
+  width: 620px;
+}
+#volunteer .modal-header {
+  border: none;
+  padding: 54px 108px 16px 54px;
+}
+#volunteer .modal-body {
+  padding: 10px 160px 60px 54px;
 }
 .progress {
   width: 350px;
