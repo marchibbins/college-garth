@@ -29,10 +29,11 @@
 
 // Text
 @sansFontFamily:          Arial, sans-serif;
-@customFontFamily:        'Arvo', @sansFontFamily;
+@customFontFamily:        'montserratregular', @sansFontFamily;
 @baseFontSize:            14px;
 @baseLineHeight:          20px;
 @headingsFontFamily:      @customFontFamily;
+@headingsFontFamilyBold:  'montserratbold', @customFontFamily;
 @headingsFontWeight:      normal;
 
 // Navbar
@@ -48,8 +49,30 @@
 @navbarLinkBackgroundHover:     @cgBlueDark;
 @navbarLinkBackgroundActive:    @cgBlueDark;
 
-// College Garth styles
+// Fonts
+@font-face {
+    font-family: 'montserratbold';
+    src: url('/static/fonts/montserrat-bold-webfont.eot');
+    src: url('/static/fonts/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/montserrat-bold-webfont.woff') format('woff'),
+         url('/static/fonts/montserrat-bold-webfont.ttf') format('truetype'),
+         url('/static/fonts/montserrat-bold-webfont.svg#montserratbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'montserratregular';
+    src: url('/static/fonts/montserrat-regular-webfont.eot');
+    src: url('/static/fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/montserrat-regular-webfont.woff') format('woff'),
+         url('/static/fonts/montserrat-regular-webfont.ttf') format('truetype'),
+         url('/static/fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// College Garth styles
 body {
     // min-width: 500px;
     min-width: 940px;
@@ -104,39 +127,49 @@ p {
         position: relative;
         margin-right: 10px;
         margin-left: -10px;
-        padding-top: 45px;
+        padding-top: 35px;
         &:before {
             content: '';
             position: absolute;
-            left: 0;
+            left: -26px;
             top: 0;
             display: block;
-            width: 350px;
+            width: 386px;
             height: 10px;
             background: @cgBlack;
         }
         .bone-icon {
             position: absolute;
-            top: -14px;
-            right: -10px;
+            top: -18px;
+            right: -20px;
         }
     }
     .find-us {
-        margin-top: 192px;
+        margin-top: 184px;
         margin-left: -20px;
         .find-us-title {
-            font-size: 32px;
+            font-size: 24px;
+            line-height: 20px;
+            letter-spacing: -2px;
         }
         .find-us-map {
-            margin-bottom: 10px;
+            margin-top: 2px;
+            margin-bottom: 20px;
             border: 10px solid @white;
         }
         .contact-address {
+            margin-bottom: 25px;
             span {
                 display: block;
             }
         }
+        .contact-tel {
+            strong {
+                color: @cgBlue;
+            }
+        }
         .tel-icon {
+            margin-top: -4px;
             margin-right: 7px;
         }
         .hours-icon {
@@ -153,10 +186,10 @@ p {
         a {
             position: absolute;
             display: block;
-            top: 10px;
-            left: -28px;
-            width: 260px;
-            height: 260px;
+            top: -8px;
+            left: 0px;
+            width: 210px;
+            height: 238px;
             .hide-text();
             background: url('/static/img/logo.png');
         }
@@ -164,52 +197,59 @@ p {
 }
 
 .subtitle {
-    margin-bottom: 32px;
+    margin-top: 30px;
+    margin-bottom: 28px;
     .rehoming {
         display: block;
-        margin-left: -174px;
-        font-size: 88px;
-        line-height: 100px;
+        margin-left: -178px;
+        font-size: 95px;
+        letter-spacing: -11px;
+        line-height: 118px;
     }
     .dawgs {
         display: block;
-        margin-left: 84px;
-        font-size: 128px;
+        margin-left: 70px;
+        font-size: 130px;
+        letter-spacing: -14px;
         line-height: 80px;
     }
     .since {
         display: block;
-        margin-left: 180px;
+        margin-left: 138px;
         font-size: 24px;
-        line-height: 70px;
+        letter-spacing: -2px;
+        line-height: 66px;
         color: @cgGrayDarker;
     }
     .ages {
         display: block;
-        margin-left: 60px;
-        font-size: 115px;
-        line-height: 80px;
+        margin-left: 62px;
+        font-size: 100px;
+        letter-spacing: -8px;
+        line-height: 60px;
     }
 }
 
 .dogs {
     margin: 42px 0 80px;
     .dogs-title {
-        margin-bottom: 44px;
+        margin-bottom: 34px;
         text-align: center;
         .the {
             display: block;
-            margin-left: -152px;
-            font-size: 34px;
+            margin-left: -180px;
+            font-size: 40px;
+            letter-spacing: -2px;
             line-height: 20px;
             color: @cgGrayDarker;
         }
         .dawgs {
             display: block;
             margin-left: 20px;
-            font-size: 72px;
-            line-height: 72px;
-            font-weight: bold;
+            font-size: 88px;
+            letter-spacing: -4px;
+            line-height: 88px;
+            font-family: @headingsFontFamilyBold;
         }
     }
     .row-fluid [class*="span"] {
@@ -225,7 +265,7 @@ p {
         width: 100%;
     }
     .dog-info {
-        padding: 6px 10px;
+        padding: 8px 10px;
     }
     .dog-name {
         margin: 0;
@@ -273,41 +313,48 @@ p {
 }
 
 .going-on {
-    padding: 50px 0;
+    padding: 40px 0 50px;
     border-bottom: 3px solid @cgGrayDark;
     background: @cgGray;
     .going-on-title {
         position: relative;
-        margin-bottom: 58px;
+        margin-bottom: 42px;
         text-align: center;
         .what {
             display: block;
             margin-left: -110px;
-            font-size: 28px;
+            font-size: 34px;
             line-height: 20px;
+            letter-spacing: -1px;
             color: @cgGrayDarker;
         }
         .going {
             display: block;
             margin-left: 40px;
-            font-size: 54px;
+            font-size: 56px;
+            letter-spacing: -2px;
             line-height: 44px;
-            font-weight: bold;
+            font-family: @headingsFontFamilyBold;
         }
         .on {
             display: block;
-            margin-left: 40px;
+            margin-left: 86px;
             font-size: 80px;
-            font-weight: bold;
+            letter-spacing: -2px;
+            line-height: 56px;
+            font-family: @headingsFontFamilyBold;
+        }
+        .ellipsis {
+            font-size: 70px;
         }
         .paw-icon {
             position: absolute;
             left: 50%;
-            top: -85px;
+            top: -75px;
             margin-left: 80px;
             display: block;
-            width: 84px;
-            height: 104px;
+            width: 119px;
+            height: 121px;
             background: url('/static/img/paw.png');
         }
     }
@@ -330,6 +377,10 @@ p {
             font-size: 16px;
             line-height: 22px;
             color: @cgGrayDarker;
+        }
+        strong {
+            font-weight: normal;
+            font-family: @headingsFontFamilyBold;
         }
     }
     .going-on-form {
@@ -359,6 +410,7 @@ p {
 
 .footer {
     margin: 48px 0 52px;
+    padding-top: 22px;
     .contact-title,
     .social-title {
         font-size: 16px;
@@ -403,12 +455,12 @@ p {
     }
     .top {
         position: absolute;
-        top: 10px;
+        top: -26px;
         left: 12px;
         .hide-text();
         display: block;
-        width: 142px;
-        height: 141px;
+        width: 138px;
+        height: 156px;
         background: url('/static/img/logo-small.png');
     }
 }
@@ -427,7 +479,8 @@ p {
         padding: 10px 160px 60px 54px;
     }
     .modal-title {
-        font-size: 34px;
+        font-size: 36px;
+        letter-spacing: -1px;
         line-height: 38px;
     }
     .close {
