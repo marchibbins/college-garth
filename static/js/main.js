@@ -70,6 +70,8 @@
                           .css('margin-left', (detail.outerWidth() / 2) * -1);
                 })
                 .on('hide', function() {
+                    detail.find('.detail-image').attr('src', '');
+                    detail.find('.detail-info').html('');
                     window.location.hash = '#home';
                 });
 
