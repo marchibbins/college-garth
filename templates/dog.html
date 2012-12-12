@@ -2,7 +2,7 @@
 
         <div class="span5 dog-container">
             <div class="dog" {% if photo %}data-id="{{ photo.id }}"{% endif %}>
-                <img src="{% if photo %}{{ photo|flickr_src }}{% endif %}" class="dog-image"/>
+                <img src="{% if photo %}{{ photo|flickr_src }}{% endif %}" alt="{% if photo %}Image of {{ photo.title|title }}{% endif %}" class="dog-image"/>
                 <div class="dog-info">
                     <h3 class="dog-name">{% if photo %}{{ photo.title|title }}{% endif %}</h3>
                     <p class="dog-description">{% if photo %}{{ photo.description|truncate(75)|line_breaks }}{% endif %}</p>

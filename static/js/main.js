@@ -219,7 +219,7 @@
         // Smooth scrolling
         $('a.scrollTo').click(function(event) {
             var name = $(this).attr('href').split('#')[1];
-            if (name) $(window).scrollTo($('.anchor[name="' + name + '"]'), 500);
+            if (name) $(window).scrollTo($('#' + name), 500);
         });
 
     });

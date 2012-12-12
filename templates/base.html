@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/static/css/main.css"/>
     </head>
     <body>
-        <a href="#top" name="top" class="anchor"></a>
+        <a href="#top" id="top" class="anchor"></a>
         <div class="title">
             <div class="container-fluid">
                 <h1 class="logo"><a href="/">College Garth Rescue Kennels</a></h1>
@@ -55,7 +55,7 @@
                     <div class="span6 pull-left">
                         <div class="find-us">
                             <h2 class="find-us-title"><strong>Find</strong> us</h2>
-                            <a href="http://maps.google.com/?q=College+Garth+Kennels,+Hathern,+Loughborough+LE12+5LD" rel="external"><img src="/static/img/map.png" class="find-us-map"></a>
+                            <a href="http://maps.google.com/?q=College+Garth+Kennels,+Hathern,+Loughborough+LE12+5LD" rel="external"><img src="/static/img/map.png" alt="Map to College Garth Rescue Kennels" class="find-us-map"/></a>
                             <p class="contact-address">
                                 <span>College Garth Rescue Kennels, </span>
                                 <span>Derby Road, Hathern, </span>
@@ -81,7 +81,7 @@
         {% block content %}{% endblock %}
 
         <div class="going-on" role="complementary">
-            <a href="#whats-going-on" name="whats-going-on" class="anchor"></a>
+            <a href="#whats-going-on" id="whats-going-on" class="anchor"></a>
             <div class="container-fluid">
                 <h2 class="going-on-title"><i class="paw-icon"></i><span class="what">What's</span> <span class="going">going</span> <span class="on">on<span class="ellipsis">...</span></span></h2>
                 <div class="row-fluid">
@@ -170,10 +170,10 @@
             </div>
         </div>
 
-        <div id="detail" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="detail-title" aria-hidden="true">
+        <div id="detail" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
             <button type="button" role="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <div class="modal-body">
-                <img src="" class="detail-image">
+                <img src="" alt="" class="detail-image"/>
                 <div class="detail-info"></div>
             </div>
         </div>
