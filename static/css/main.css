@@ -3153,10 +3153,10 @@ p {
   border-radius: 0;
 }
 .navbar .nav {
-  margin-left: 224px;
+  margin-left: 206px;
 }
 .navbar .nav > li > a {
-  padding: 26px 20px;
+  padding: 26px 18px;
   font-family: 'montserratregular', Arial, sans-serif;
   text-transform: uppercase;
 }
@@ -3181,32 +3181,34 @@ p {
 }
 .header .about {
   position: relative;
+  margin-left: -20px;
   margin-right: 10px;
-  margin-left: -10px;
   padding-top: 35px;
 }
 .header .about:before {
   content: '';
   position: absolute;
-  left: -26px;
+  right: 12px;
+  right: 24px;
   top: 0;
   display: block;
-  width: 386px;
-  height: 10px;
+  width: 412px;
+  height: 8px;
   background: #231f20;
 }
 .header .about .bone-icon {
   position: absolute;
-  top: -18px;
-  right: -20px;
+  top: -12px;
+  right: -40px;
+  right: -28px;
 }
 .header .find-us {
-  margin-top: 184px;
+  margin-top: 176px;
   margin-left: -20px;
 }
 .header .find-us .find-us-title {
-  font-size: 24px;
-  line-height: 20px;
+  font-size: 30px;
+  line-height: 30px;
   letter-spacing: -2px;
 }
 .header .find-us .find-us-map {
@@ -3243,10 +3245,10 @@ p {
 .title .logo a {
   position: absolute;
   display: block;
-  top: -6px;
+  top: 16px;
   left: 0px;
-  width: 210px;
-  height: 238px;
+  width: 201px;
+  height: 226px;
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
@@ -3255,41 +3257,34 @@ p {
   background: url('/static/img/logo.png');
 }
 .subtitle {
-  margin-top: 30px;
-  margin-bottom: 28px;
+  margin-top: 4px;
 }
-.subtitle .rehoming {
+.subtitle .college {
   display: block;
-  margin-left: -176px;
-  font-size: 100px;
-  letter-spacing: -6px;
-  line-height: 118px;
-  font-weight: normal;
-  font-family: 'montserratbold', 'montserratregular', Arial, sans-serif;
-}
-.subtitle .dawgs {
-  display: block;
-  margin-left: 76px;
+  margin-left: -170px;
   font-size: 134px;
   letter-spacing: -8px;
-  line-height: 80px;
+  line-height: 120px;
   font-weight: normal;
   font-family: 'montserratbold', 'montserratregular', Arial, sans-serif;
 }
-.subtitle .since {
+.subtitle .garth {
   display: block;
-  margin-left: 138px;
-  font-size: 24px;
-  letter-spacing: -2px;
-  line-height: 70px;
-  color: #575455;
+  margin-left: 16px;
+  font-size: 134px;
+  letter-spacing: -6px;
+  line-height: 120px;
+  font-weight: normal;
+  font-family: 'montserratbold', 'montserratregular', Arial, sans-serif;
 }
-.subtitle .ages {
+.subtitle .kennels {
   display: block;
-  margin-left: 62px;
-  font-size: 100px;
-  letter-spacing: -8px;
+  margin-top: 20px;
+  margin-left: -50px;
+  font-size: 58px;
+  letter-spacing: -3px;
   line-height: 60px;
+  color: #5a5758;
 }
 .dogs {
   margin: 42px 0 66px;
