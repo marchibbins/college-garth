@@ -47,6 +47,37 @@ class JSONIndex(Index):
         super(JSONIndex, self).get(page, True)
 
 
+class JSONPhoto(webapp2.RequestHandler):
+    def get(self, id=0):
+        try:
+            # Get photo
+            photo = get_flickr_json('photo',
+                        flickr.photos.getInfo(photo_id=id, format='json',
+                            nojsoncallback=1))
+
+            # Check photosets
+            contexts = get_flickr_json('set',
+                        flickr.photos.getAllContexts(photo_id=id, format='json',
+                            nojsoncallback=1))
+
+            # Photo should only be in one set, check ID
+            id = int(contexts[0].get('id'))
+
+            if id == settings.PHOTOSET_ID:
+                photo['archive'] = False
+            elif id == settings.PHOTOSET_ARCHIVE_ID:
+                photo['archive'] = True
+            else:
+                raise
+        except:
+            # Go 404 if not found, e.g. photo not found
+            webapp2.abort(404)
+
+        # Write as JSON
+        self.response.headers['Content-Type'] = "application/json; charset=utf-8"
+        self.response.out.write(json.dumps(photo))
+
+
 class Signup(webapp2.RequestHandler):
     def post(self):
         email = cgi.escape(self.request.get('email'))
@@ -143,6 +174,7 @@ urls = [
     # JSON views
     (r'/json/', JSONIndex),
     (r'/json/page/(\d+)', JSONIndex),
+    (r'/json/photo/(\d+)', JSONPhoto),
 
     # Newsletter signup
     (r'/signup', Signup),

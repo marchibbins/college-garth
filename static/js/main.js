@@ -36,6 +36,9 @@
 
             // Setup JS pagination
             paginate();
+
+            // Check permalink
+            permalink();
         };
 
         var update = function() {
@@ -71,28 +74,8 @@
                 };
 
                 // Permalink
-                var id = dog.data().id,
-                    detail = $('#detail');
-
-                detail.on('show', function() {
-                    detail.css('margin-top', (detail.outerHeight() / 2) * -1)
-                          .css('margin-left', (detail.outerWidth() / 2) * -1);
-                })
-                .on('hide', function() {
-                    detail.find('.detail-image').attr('src', '');
-                    detail.find('.detail-info').html('');
-                    window.location.hash = '#home';
-                });
-
                 dog.click(function() {
-                    var image = dog.find('.dog-image'),
-                        info = dog.find('.dog-info').html();
-
-                    detail.find('.detail-image').attr('src', image.attr('src'));
-                    detail.find('.detail-info').html(info);
-
-                    detail.modal();
-                    window.location.hash = '#' + id;
+                    CGRK.dogs.detail(dog);
                 }).css('cursor', 'pointer');
 
                 // Show new dawg
@@ -121,7 +104,6 @@
             pagination.append(more);
 
             // Request data
-            var templateHTML = $('.dog-template').html();
             $('.pagination-more a').click(function(event) {
                 event.preventDefault();
 
@@ -152,28 +134,7 @@
 
                     $.each(data.photo, function(i, obj) {
                         // Basic info
-                        var template = $(templateHTML),
-                            id = obj.id,
-                            name = obj.title.charAt(0).toUpperCase() + obj.title.slice(1),
-                            description = description_full = obj.description || '',
-
-                            // Make Flickr url
-                            image = 'http://farm' + obj.farm + '.staticflickr.com/' + obj.server + '/' + obj.id + '_' + obj.secret + '.jpg';
-
-                        // Truncate and clean description
-                        // description_full = description_full.replace(/\n/g, '<br>');
-                        if (description.length > 75) {
-                            description = description.substring(0, 75).replace(/\n/g, '<br>') + ' ...';
-                        } else {
-                            description = description.replace(/\n/g, '<br>');
-                        }
-
-                        $('.dog', template).attr('data-id', id);
-                        $('.dog-name', template).text(name);
-                        $('.dog-description', template).html(description);
-                        $('.dog-description-full', template).html(description_full);
-                        $('.dog-image', template).attr('src', image);
-
+                        var template = CGRK.dogs.template(obj);
                         template.addClass('hidden');
                         count++;
 
@@ -207,6 +168,33 @@
             });
         };
 
+        var template = function(obj) {
+            var templateHTML = $('.dog-template').html(),
+                template = $(templateHTML),
+                id = obj.id,
+                name = obj.title.charAt(0).toUpperCase() + obj.title.slice(1),
+                description = description_full = obj.description || '',
+
+                // Make Flickr url
+                image = 'http://farm' + obj.farm + '.staticflickr.com/' + obj.server + '/' + obj.id + '_' + obj.secret + '.jpg';
+
+            // Truncate and clean description
+            description_full = description_full.replace(/\n/g, '<br>');
+            if (description.length > 75) {
+                description = description.substring(0, 75).replace(/\n/g, '<br>') + ' ...';
+            } else {
+                description = description.replace(/\n/g, '<br>');
+            }
+
+            $('.dog', template).attr('data-id', id);
+            $('.dog-name', template).text(name);
+            $('.dog-description', template).html(description);
+            $('.dog-description-full', template).html(description_full);
+            $('.dog-image', template).attr('src', image);
+
+            return template;
+        };
+
         var updateHeader = function() {
             var logo = $('.title .logo'),
                 home = $('.navbar .nav-home');
@@ -220,9 +208,62 @@
             }
         };
 
+        var permalink = function() {
+            // Setup modal
+            var detail = $('#detail');
+            detail.on('show', function() {
+                detail.css('margin-top', (detail.outerHeight() / 2) * -1)
+                      .css('margin-left', (detail.outerWidth() / 2) * -1);
+            })
+            .on('hide', function() {
+                detail.find('.detail-image').attr('src', '');
+                detail.find('.detail-info').html('');
+                window.location.hash = '#home';
+            });
+
+            // Check initial URL
+            var hash = parseInt(window.location.hash.substring(1));
+            if (hash > 0) {
+                var dog = $('.dog[data-id="' + hash + '"]');
+                if (dog.length) {
+                    CGRK.dogs.detail(dog);
+                } else {
+                    $.ajax({
+                        url: '/json/photo/' + hash,
+                        dataType: 'json'
+                    })
+
+                    .fail(function() {
+                        window.location.hash = '#home';
+                    })
+
+                    .done(function(data) {
+                        var template = CGRK.dogs.template(data),
+                            dog = template.find('.dog');
+
+                        CGRK.dogs.detail(dog);
+                    });
+                }
+            }
+        };
+
+        var detail = function(dog) {
+            var detail = $('#detail'),
+                image = dog.find('.dog-image'),
+                info = dog.find('.dog-info').html();
+
+            detail.find('.detail-image').attr('src', image.attr('src'));
+            detail.find('.detail-info').html(info);
+
+            detail.modal();
+            window.location.hash = '#' + dog.data().id;
+        }
+
         return {
             init: init,
-            update: update
+            update: update,
+            detail: detail,
+            template: template
         };
 
     })();
