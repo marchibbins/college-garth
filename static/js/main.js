@@ -9,6 +9,15 @@
         var init = function() {
             if ($('.dogs').length === 0) return;
 
+            // Legacy, boo!
+            if ($.browser.msie && parseInt($.browser.version, 10) < 8) {
+                $('.navbar').addClass('legacy');
+            }
+
+            // Update header and logo
+            $(window).scroll(updateHeader);
+            updateHeader();
+
             // Hide (non JS-enhanced..!) dogs
             $('.dogs .dog').parent().addClass('hidden');
 
@@ -196,6 +205,19 @@
                     });
                 });
             });
+        };
+
+        var updateHeader = function() {
+            var logo = $('.title .logo'),
+                home = $('.navbar .nav-home');
+
+            if ($(window).scrollTop() >= 158) {
+                logo.addClass('hide');
+                home.removeClass('invisible').parent().removeClass('masked');
+            } else {
+                logo.removeClass('hide');
+                home.addClass('invisible').parent().addClass('masked');
+            }
         };
 
         return {

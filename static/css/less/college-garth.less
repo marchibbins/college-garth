@@ -90,28 +90,86 @@ p {
 }
 
 .navbar {
+    min-width: 940px;
     margin-bottom: 0;
     .navbar-inner {
         border: none;
         .border-radius(0);
+        box-shadow: none;
+        background: none;
+        filter: none;
     }
     .nav {
-        margin-left: 206px;
+        margin: 0;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: @navbarHeight;
+            background: @cgBlue;
+        }
+        &:before {
+            right: 100%;
+        }
+        &:after {
+            left: 100%;
+        }
         > li > a {
-            padding: 26px 18px;
+            padding: 26px 26px;
             font-family: @customFontFamily;
             text-transform: uppercase;
+            background: @cgBlue;
+        }
+        .nav-home {
+            margin-left: 70px;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 70px;
+                height: @navbarHeight;
+                background: url('/static/img/nav-icon.png');
+            }
+            &:hover,
+            &:focus,
+            &:active {
+                background: @cgBlue;
+            }
+        }
+        .masked {
+            background: @cgBlue;
+        }
+    }
+    &.legacy {
+        .navbar-inner {
+            background: @cgBlue;
+        }
+        .nav {
+            float: none;
+            a {
+                padding: 26px 34px;
+            }
+            .nav-home {
+                margin-left: 0;
+                &:before {
+                    display: none;
+                }
+            }
         }
     }
 }
 
 .header {
-    padding: 46px 0 24px;
+    padding: (@navbarHeight + 46px) 0 46px;
     background: @cgGray url('/static/img/pattern.png');
     &:after {
         content: '';
         position: relative;
-        bottom: -24px;
+        bottom: -46px;
         display: block;
         width: 100%;
         height: 30px;
@@ -190,10 +248,12 @@ p {
 }
 
 .title {
-    height: 0;
+    z-index: @zindexFixedNavbar + 1;
+    .container-fluid {
+        z-index: @zindexFixedNavbar + 1;
+    }
     .logo {
         position: relative;
-        z-index: 10;
         a {
             position: absolute;
             display: block;
@@ -203,6 +263,7 @@ p {
             height: 226px;
             .hide-text();
             background: url('/static/img/logo.png');
+            z-index: @zindexFixedNavbar + 1;
         }
     }
 }
@@ -553,7 +614,7 @@ p {
 
 .anchor {
     position: relative;
-    top: -85px;
+    top: -(@navbarHeight + 72px);
     height: 0;
     .hide-text();
 }
