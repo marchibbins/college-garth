@@ -7,6 +7,8 @@
                     <h3 class="dog-name" itemprop="name">{% if photo %}{{ photo.title|title }}{% endif %}</h3>
                     <p class="dog-description">{% if photo %}{{ photo.description|truncate(75)|line_breaks }}{% endif %}</p>
                     <p class="dog-description-full hide" itemprop="description">{% if photo %}{{ photo.description|line_breaks }}{% endif %}</p>
+
+                    <div class="dog-share"></div>
                 </div>
             </div>
         </div>

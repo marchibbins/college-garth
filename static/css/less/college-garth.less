@@ -330,6 +330,7 @@ p {
 }
 
 .dog {
+    position: relative;
     max-width: 350px;
     margin: 0 auto 45px;
     background: @grayLighter;
@@ -337,16 +338,24 @@ p {
         width: 100%;
     }
     .dog-info {
-        padding: 8px 10px;
+        padding: 8px 14px 42px;
     }
     .dog-name {
         margin: 0;
-        font-size: 20px;
+        font-size: 22px;
     }
     .dog-description {
         font-size: 12px;
         line-height: 18px;
         color: @cgGrayDarker;
+    }
+    .dog-share {
+        position: absolute;
+        left: 14px;
+        bottom: 20px;
+        .socialite {
+            display: inline;
+        }
     }
 }
 
@@ -583,7 +592,7 @@ p {
         max-height: 420px;
     }
     .detail-info {
-        padding: 6px 10px;
+        padding: 6px 14px 18px;
         background: @grayLighter;
         .dog-name {
             margin: 0;

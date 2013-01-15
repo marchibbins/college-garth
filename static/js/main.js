@@ -39,6 +39,9 @@
 
             // Check permalink
             permalink();
+
+            // Page social
+            Socialite.activate($('.header .facebook-like')[0], 'facebook-like');
         };
 
         var update = function() {
@@ -73,13 +76,34 @@
                     description.html(truncated);
                 };
 
+                // Share buttons
+                var gplus = '<a class="socialite googleplus-share" href="" data-href="" data-action="share" data-annotation="bubble" rel="nofollow" target="_blank">Share on Google+</a>',
+                    pinit = '<a class="socialite pinterest-pinit" href="" data-count-layout="horizontal" rel="nofollow" target="_blank">Pin It!</a>';
+
+                $('.dog-share', dog).html(gplus + pinit);
+
+                var abs_url = 'http://www.collegegarthrescuekennels.co.uk/#' + dog.data().id,
+                    ghref = 'https://plus.google.com/share?url=' + encodeURIComponent(abs_url),
+                    phref = 'http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(abs_url) + '&amp;media=' + image.attr('src') + '&amp;description=' + encodeURIComponent(description.text());
+
+                $('.googleplus-share', dog).attr('href', ghref).attr('data-href', abs_url);
+                $('.pinterest-pinit', dog).attr('href', phref);
+
                 // Permalink
-                dog.click(function() {
+                $('.js-dog-image, .dog-name, .dog-description', dog).click(function() {
                     CGRK.dogs.detail(dog);
                 }).css('cursor', 'pointer');
 
                 // Show new dawg
                 dog.addClass('js-dog').parent().removeClass('hidden');
+            });
+
+            $('.googleplus-share:not(.socialite-instance)').each(function() {
+                Socialite.activate(this, 'googleplus-share');
+            });
+
+            $('.pinterest-pinit:not(.socialite-instance)').each(function() {
+                Socialite.activate(this, 'pinterest-pinit');
             });
 
             // Square up sizes
@@ -253,7 +277,7 @@
                 info = dog.find('.dog-info').html();
 
             detail.find('.detail-image').attr('src', image.attr('src'));
-            detail.find('.detail-info').html(info);
+            detail.find('.detail-info').html(info).find('.dog-share').remove();
 
             detail.modal();
             window.location.hash = '#' + dog.data().id;
