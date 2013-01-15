@@ -3284,6 +3284,9 @@ p {
 .header .find-us .contact-address span {
   display: block;
 }
+.header .find-us .contact-address .contact-postcode {
+  display: inline;
+}
 .header .find-us .contact-tel strong {
   color: #0960a5;
 }
@@ -3543,6 +3546,9 @@ p {
 }
 .footer .contact-info span {
   display: block;
+}
+.footer .contact-info .contact-postcode {
+  display: inline;
 }
 .footer .contact-info .contact-tel,
 .footer .contact-info .contact-hours {
