@@ -4,6 +4,7 @@ from pychimp import PyChimp
 
 from flickr_api.api import flickr
 from flickr_api.method_call import clean_content
+
 import flickr_api
 import filters
 import settings
