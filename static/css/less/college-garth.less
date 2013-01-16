@@ -683,11 +683,11 @@ p {
         .dog-container {
             width: (@fluidGridColumnWidth * 5) + (@fluidGridGutterWidth * (5 - 1)) + (@fluidGridGutterWidth / 2);
             margin-left: @fluidGridGutterWidth * 1.75;
-            &:first-child {
+            &:nth-child(1) {
                 margin-left: -(@fluidGridGutterWidth / 2);
                 margin-right: @fluidGridGutterWidth / 2;
             }
-            &:last-child {
+            &:nth-child(3) {
                 margin-right: -(@fluidGridGutterWidth / 2);
                 margin-left: (@fluidGridGutterWidth * 1.75) + (@fluidGridGutterWidth / 2);
             }
