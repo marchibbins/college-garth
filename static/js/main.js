@@ -212,8 +212,7 @@
 
             $('.dog', template).attr('data-id', id);
             $('.dog-name', template).text(name);
-            $('.dog-description', template).html(description);
-            $('.dog-description-full', template).html(description_full);
+            $('.dog-description', template).html(description).attr('data-longdesc', description_full);
             $('.dog-image', template).attr('src', image);
 
             return template;
@@ -274,10 +273,12 @@
         var detail = function(dog) {
             var detail = $('#detail'),
                 image = dog.find('.dog-image'),
-                info = dog.find('.dog-info').html();
+                info = dog.find('.dog-info').html(),
+                description_full = dog.find('.dog-description').data().longdesc;
 
             detail.find('.detail-image').attr('src', image.attr('src'));
             detail.find('.detail-info').html(info).find('.dog-share').remove();
+            detail.find('.dog-description').html(description_full);
 
             detail.modal();
             window.location.hash = '#' + dog.data().id;

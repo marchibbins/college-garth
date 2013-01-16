@@ -5,8 +5,7 @@
                 <img src="{{ photo|flickr_src }}" alt="Image of {{ photo.title|title }}" class="dog-image" itemprop="image"/>
                 <div class="dog-info">
                     <h3 class="dog-name" itemprop="name">{{ photo.title|title }}</h3>
-                    <p class="dog-description">{{ photo.description|truncate(75)|line_breaks }}</p>
-                    <p class="dog-description-full hide" itemprop="description">{{ photo.description|line_breaks }}</p>
+                    <p class="dog-description" data-longdesc="{{ photo.description|line_breaks|e }}">{{ photo.description|truncate(75)|line_breaks }}</p>
                     <div class="dog-share"></div>
                 </div>
             </div>

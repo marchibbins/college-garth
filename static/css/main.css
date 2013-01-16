@@ -3664,10 +3664,6 @@ p {
   margin: 0;
 }
 #detail .detail-info .dog-description {
-  display: none;
-}
-#detail .detail-info .dog-description-full {
-  display: block;
   max-width: 320px;
 }
 #volunteer {
