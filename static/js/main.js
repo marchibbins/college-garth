@@ -235,8 +235,10 @@
             // Setup modal
             var detail = $('#detail');
             detail.on('show', function() {
-                detail.css('margin-top', (detail.outerHeight() / 2) * -1)
-                      .css('margin-left', (detail.outerWidth() / 2) * -1);
+                detail.imagesLoaded(function() {
+                    detail.css('margin-top', (detail.outerHeight() / 2) * -1)
+                          .css('margin-left', (detail.outerWidth() / 2) * -1);
+                });
             })
             .on('hide', function() {
                 detail.find('.detail-image').attr('src', '');
