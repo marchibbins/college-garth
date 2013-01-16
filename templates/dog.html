@@ -1,13 +1,12 @@
 {# Template for each dog, also rendered empty #}
 
         <div class="span5 dog-container">
-            <div class="dog" {% if photo %}data-id="{{ photo.id }}"{% endif %} itemscope itemtype="http://schema.org/Thing">
-                <img src="{% if photo %}{{ photo|flickr_src }}{% endif %}" alt="{% if photo %}Image of {{ photo.title|title }}{% endif %}" class="dog-image" itemprop="image"/>
+            <div class="dog" data-id="{{ photo.id }}" itemscope itemtype="http://schema.org/Thing">
+                <img src="{{ photo|flickr_src }}" alt="Image of {{ photo.title|title }}" class="dog-image" itemprop="image"/>
                 <div class="dog-info">
-                    <h3 class="dog-name" itemprop="name">{% if photo %}{{ photo.title|title }}{% endif %}</h3>
-                    <p class="dog-description">{% if photo %}{{ photo.description|truncate(75)|line_breaks }}{% endif %}</p>
-                    <p class="dog-description-full hide" itemprop="description">{% if photo %}{{ photo.description|line_breaks }}{% endif %}</p>
-
+                    <h3 class="dog-name" itemprop="name">{{ photo.title|title }}</h3>
+                    <p class="dog-description">{{ photo.description|truncate(75)|line_breaks }}</p>
+                    <p class="dog-description-full hide" itemprop="description">{{ photo.description|line_breaks }}</p>
                     <div class="dog-share"></div>
                 </div>
             </div>

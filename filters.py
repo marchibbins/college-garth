@@ -17,7 +17,23 @@ def line_breaks(string):
     return Markup(result).unescape()
 
 
+# Return an empty object for template
+def template_obj(obj):
+    if hasattr(obj, 'title'):
+        return obj
+    else:
+        return {
+            'title': '',
+            'farm': '',
+            'server': '',
+            'id': '',
+            'secret': '',
+            'description': '',
+        }
+
+
 jinja_filters = {
     'flickr_src': flickr_src,
     'line_breaks': line_breaks,
+    'template_obj': template_obj,
 }

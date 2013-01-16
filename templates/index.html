@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class="dog-template hide">
-            {% include "dog.html" %}
+            {% set photo = photo|template_obj %}
+                {% include "dog.html" %}
         </div>
 {% endblock %}
