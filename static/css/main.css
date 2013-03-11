@@ -3347,11 +3347,9 @@ p {
 }
 .subtitle .kennels {
   display: block;
-  margin-top: 20px;
-  margin-left: -50px;
-  font-size: 58px;
+  font-size: 80px;
   letter-spacing: -3px;
-  line-height: 60px;
+  line-height: 80px;
   color: #5a5758;
 }
 .dogs {

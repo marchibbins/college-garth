@@ -82,7 +82,7 @@
 
                 $('.dog-share', dog).html(gplus + pinit);
 
-                var abs_url = 'http://www.collegegarthrescuekennels.co.uk/#' + dog.data().id,
+                var abs_url = 'http://www.collegegarthkennels.co.uk/#' + dog.data().id,
                     ghref = 'https://plus.google.com/share?url=' + encodeURIComponent(abs_url),
                     phref = 'http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(abs_url) + '&amp;media=' + image.attr('src') + '&amp;description=' + encodeURIComponent(description.text());
 
