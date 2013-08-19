@@ -99,11 +99,15 @@
             });
 
             $('.googleplus-share:not(.socialite-instance)').each(function() {
-                Socialite.activate(this, 'googleplus-share');
+                try {
+                    Socialite.activate(this, 'googleplus-share');
+                } catch (e) {}
             });
 
             $('.pinterest-pinit:not(.socialite-instance)').each(function() {
-                Socialite.activate(this, 'pinterest-pinit');
+                try {
+                    Socialite.activate(this, 'pinterest-pinit');
+                } catch (e) {}
             });
 
             // Square up sizes
