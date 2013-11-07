@@ -1,5 +1,3 @@
-from google.appengine.api import memcache
-
 from pychimp import PyChimp
 
 from flickr_api.api import flickr
@@ -92,21 +90,16 @@ class Signup(webapp2.RequestHandler):
 
 def get_photoset(page):
     # Check cache first
-    cached = memcache.get('photoset:%s' % page)
-    if cached is not None:
-        return cached
-    else:
-        try:
-            # Create JSON object from raw data, so we can cache it nicely
-            photoset = get_flickr_json('photoset',
-                flickr.photosets.getPhotos(photoset_id=settings.PHOTOSET_ID,
-                    page=page, per_page=6, format='json', nojsoncallback=1))
+    try:
+        # Create JSON object from raw data, so we can cache it nicely
+        photoset = get_flickr_json('photoset',
+            flickr.photosets.getPhotos(photoset_id=settings.PHOTOSET_ID,
+                page=page, per_page=6, format='json', nojsoncallback=1))
 
-            memcache.add('photoset:%s' % page, photoset, 300)
-            return photoset
-        except:
-            # Go 404 if not found, e.g. page out of bounds
-            webapp2.abort(404)
+        return photoset
+    except:
+        # Go 404 if not found, e.g. page out of bounds
+        webapp2.abort(404)
 
 
 def get_photos(photoset):
@@ -115,21 +108,16 @@ def get_photos(photoset):
     for index, photo in enumerate(photos):
         id = photo.get('id')
         # Check cache first
-        cached = memcache.get('photo:%s' % id)
-        if cached is not None:
-            photos[index] = cached
-        else:
-            try:
-                # Replace photoset data with info object
-                photo = get_flickr_json('photo',
-                    flickr.photos.getInfo(photo_id=id, format='json',
-                        nojsoncallback=1))
+        try:
+            # Replace photoset data with info object
+            photo = get_flickr_json('photo',
+                flickr.photos.getInfo(photo_id=id, format='json',
+                    nojsoncallback=1))
 
-                memcache.add('photo:%s' % id, photo, 300)
-                photos[index] = photo
-            except:
-                # Remove if unable
-                del photos[index]
+            photos[index] = photo
+        except:
+            # Remove if unable
+            del photos[index]
 
     # Remove any empty photo objects
     photoset['photo'] = filter(None, photos)
