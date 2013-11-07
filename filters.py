@@ -6,7 +6,10 @@ import re
 
 # Construct image URL from Photo object
 def flickr_src(photo):
-    return 'http://farm%(farm)s.staticflickr.com/%(server)s/%(id)s_%(secret)s.jpg' % photo
+    if photo.get('id'):
+        return 'http://farm%(farm)s.staticflickr.com/%(server)s/%(id)s_%(secret)s.jpg' % photo
+    else:
+        return ''
 
 
 # Convert new lines to line breaks
