@@ -135,12 +135,9 @@ def get_flickr_json(key, data):
 
 def handle_404(request, response, exception):
     # Simple handler for 404 template
-    # template = jinja_environment.get_template('404.html')
-    # response.write(template.render())
-    # response.set_status(404)
-
-    # Let's try sending strays home
-    return webapp2.redirect('/', code=301)
+    template = jinja_environment.get_template('404.html')
+    response.write(template.render())
+    response.set_status(404)
 
 
 # Configuration
