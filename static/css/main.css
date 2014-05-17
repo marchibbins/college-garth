@@ -3258,7 +3258,8 @@ p {
   right: -40px;
   right: -28px;
 }
-.header .about .rehoming {
+.header .about .rehoming,
+.header .about .support {
   margin: 0 0 2px;
   font-size: 22px;
   letter-spacing: -1px;
