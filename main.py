@@ -10,6 +10,7 @@ import settings
 import cgi
 import jinja2
 import json
+import logging
 import os
 import webapp2
 
@@ -89,16 +90,20 @@ class Signup(webapp2.RequestHandler):
 
 
 def get_photoset(page):
-    # Check cache first
-    try:
-        # Create JSON object from raw data, so we can cache it nicely
-        photoset = get_flickr_json('photoset',
-            flickr.photosets.getPhotos(photoset_id=settings.PHOTOSET_ID,
-                page=page, per_page=6, format='json', nojsoncallback=1))
+    # Retry attemps for now
+    for attempt in range(10):
+        try:
+            # Create JSON object from raw data, so we can cache it nicely
+            photoset = get_flickr_json('photoset',
+                flickr.photosets.getPhotos(photoset_id=settings.PHOTOSET_ID,
+                    page=page, per_page=6, format='json', nojsoncallback=1))
 
-        return photoset
-    except:
-        # Go 404 if not found, e.g. page out of bounds
+            return photoset
+        except:
+            logging.debug('Failed to get photoset %s after %s attempts' % (settings.PHOTOSET_ID, attempt))
+        else:
+            break
+    else:
         webapp2.abort(404)
 
 
@@ -107,15 +112,20 @@ def get_photos(photoset):
     photos = photoset.get('photo')
     for index, photo in enumerate(photos):
         id = photo.get('id')
-        # Check cache first
-        try:
-            # Replace photoset data with info object
-            photo = get_flickr_json('photo',
-                flickr.photos.getInfo(photo_id=id, format='json',
-                    nojsoncallback=1))
+        # Retry attemps for now
+        for attempt in range(10):
+            try:
+                # Replace photoset data with info object
+                photo = get_flickr_json('photo',
+                    flickr.photos.getInfo(photo_id=id, format='json',
+                        nojsoncallback=1))
 
-            photos[index] = photo
-        except:
+                photos[index] = photo
+            except:
+                logging.debug('Failed to get photo %s after %s attempts' % (id, attempt))
+            else:
+                break
+        else:
             # Remove if unable
             del photos[index]
 
@@ -171,6 +181,9 @@ urls = [
 
 # Debug based on local or production environment
 DEBUG = os.environ['SERVER_SOFTWARE'].startswith('Dev')
+
+# Logging
+logging.getLogger().setLevel(logging.DEBUG)
 
 # Application
 app = webapp2.WSGIApplication(urls, debug=DEBUG)
