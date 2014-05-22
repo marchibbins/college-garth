@@ -3265,6 +3265,9 @@ p {
   letter-spacing: -1px;
   color: #5a5758;
 }
+.header .about .newsletter {
+  font-size: 18px;
+}
 .header .find-us {
   margin-top: 176px;
   margin-left: -20px;
