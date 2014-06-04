@@ -91,7 +91,7 @@ class Signup(webapp2.RequestHandler):
 
 def get_photoset(page):
     # Retry attemps for now
-    for attempt in range(10):
+    for attempt in range(20):
         try:
             # Create JSON object from raw data, so we can cache it nicely
             photoset = get_flickr_json('photoset',
@@ -113,7 +113,7 @@ def get_photos(photoset):
     for index, photo in enumerate(photos):
         id = photo.get('id')
         # Retry attemps for now
-        for attempt in range(10):
+        for attempt in range(20):
             try:
                 # Replace photoset data with info object
                 photo = get_flickr_json('photo',
